@@ -74,7 +74,8 @@ public class HelloWorld {
 			
             StringBuffer buffer = new StringBuffer();  
             char[] array = origin.toCharArray();  
-            double currentLength = 0;    
+            double currentLength = 0;  
+			int index=0;
             for(char c : array){  
                 // 字符长度  
                 int charlen = String.valueOf(c).getBytes(ENCODE).length;  
@@ -86,17 +87,26 @@ public class HelloWorld {
                 }  
                 if(currentLength <= len){  
                     buffer.append(c);  
+					index++;
                 } else {  
                     break;  
                 }  
             }
-			int how = (int)((len - currentLength)/0.5);
+			int how = (int)((len-currentLength)/0.5);
+			System.out.println(len);
+			System.out.println(currentLength);
 			System.out.println(how);
-			if(how==-1) {
+			int nextlen = 0;
+			if(index < origin.length() ) {
+							System.out.println(array[index]);
+
+				nextlen = String.valueOf(array[index]).getBytes(ENCODE).length;
+			}
+			if(how==-1 && nextlen == 3) {
 				how = 1;
 			}
 			if(how > 0) {
-				for(int i = 0; i< how; i++) {
+				for(int i =0; i< how; i++) {
 					buffer.append("0");
 				}	
 			}             
@@ -131,5 +141,7 @@ public class HelloWorld {
 		  dayForWeek = c.get(Calendar.DAY_OF_WEEK) - 1;  
 		 }   
 		System.out.println(dayForWeek);
+		
+		System.out.println(getSubString("中卓大健康中卓大健康",6));
     }  
 }
