@@ -92,6 +92,9 @@ public class HelloWorld {
             }
 			int how = (int)((len - currentLength)/0.5);
 			System.out.println(how);
+			if(how==-1) {
+				how = 1;
+			}
 			if(how > 0) {
 				for(int i = 0; i< how; i++) {
 					buffer.append("0");
